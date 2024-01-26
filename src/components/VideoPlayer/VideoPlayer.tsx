@@ -90,8 +90,7 @@ const VideoCallComponent: React.FC = () => {
   }, [peer, user2PeerId]);
 
   return (
-    <div>
-      <h1>WebRTC Video Call</h1>
+    <div style={{ display: "flex" }}>
       <div>
         <h2>User 1 (Caller)</h2>
         <video ref={localVideoRef} autoPlay playsInline muted />
@@ -111,21 +110,23 @@ const VideoCallComponent: React.FC = () => {
           <span style={{ color: copied ? "green" : "" }}>Copied!</span>
         )}
       </div>
-      <div>
-        <h2>User 2 (Receiver)</h2>
-        <video ref={remoteVideoRef} autoPlay playsInline />
-      </div>
-      <div>
-        <input
-          type="text"
-          placeholder="Enter User 2's Peer ID"
-          value={user2PeerId}
-          style={{ width: "60%" }}
-          onChange={(e) => setUser2PeerId(e.target.value)}
-        />
-        <button onClick={initiateCall} disabled={calling}>
-          {calling ? "Calling..." : "Call"}
-        </button>
+      <div style={{ marginLeft: "20px" }}>
+        <div>
+          <h2>User 2 (Receiver)</h2>
+          <video ref={remoteVideoRef} autoPlay playsInline />
+        </div>
+        <div>
+          <input
+            type="text"
+            placeholder="Enter User 2's Peer ID"
+            value={user2PeerId}
+            style={{ width: "60%" }}
+            onChange={(e) => setUser2PeerId(e.target.value)}
+          />
+          <button onClick={initiateCall} disabled={calling}>
+            {calling ? "Calling..." : "Call"}
+          </button>
+        </div>
       </div>
     </div>
   );
